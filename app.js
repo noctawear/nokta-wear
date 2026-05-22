@@ -374,7 +374,6 @@ function openPackageModal(id) {
             <i class="fa${isInWishlist ? 's' : 'r'} fa-heart"></i>
           </button>
         </div>
-        <!-- Info form shown before WhatsApp order -->
         <div id="modal-info-form" class="modal-info-form">
           <p class="modal-info-form-title"><i class="fas fa-user"></i> ${t('fullname') + ' & ' + t('phone')}</p>
           <div class="form-group"><input type="text" class="form-input" id="modal-f-name" placeholder="${t('fullname')}"></div>
@@ -395,7 +394,6 @@ function selectSize(size, btn) {
   state.currentSize = size;
   document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  // Show WhatsApp order button now that size is selected
   const waBtn = document.getElementById('modal-whatsapp-btn');
   if (waBtn) waBtn.style.display = '';
 }
@@ -433,7 +431,6 @@ function addToCart() {
 
 function whatsappOrderWithInfo() {
   if (!state.currentSize) { showToast(t('select_size_warn'), 'exclamation-circle'); return; }
-  // Show inline form
   const form = document.getElementById('modal-info-form');
   if (form) {
     form.classList.toggle('visible');
