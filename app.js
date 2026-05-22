@@ -211,6 +211,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   bindEvents();
   initScrollReveal();
   updateCartBadge();
+
+  // Deep link: open pack from URL hash (e.g. #pack-essential)
+  const hash = window.location.hash;
+  if (hash.startsWith('#pack-')) {
+    const packId = hash.replace('#pack-', '');
+    setTimeout(() => {
+      const pkg = state.data.packages.find(p => p.id === packId);
+      if (pkg) {
+        document.getElementById('packages')?.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => openPackageModal(packId), 400);
+      }
+    }, 2000); // wait for loading screen
+  }
 });
 
 // ── Render Everything ────────────────────────────
@@ -314,6 +327,9 @@ function openPackageModal(id) {
   state.currentSize = null;
   state.currentQty = 1;
 
+  // Update URL hash with package id for deep linking
+  history.pushState(null, '', '#pack-' + id);
+
   const modal = document.getElementById('package-modal');
   const isInWishlist = state.wishlist.includes(id);
 
@@ -339,7 +355,7 @@ function openPackageModal(id) {
           <div class="control-group">
             <label>${t('select_size')}</label>
             <div class="size-selector">
-              ${(['X','XL','XXL']).map(s => `
+              ${(['L','XL','XXL']).map(s => `
                 <button class="size-btn" data-size="${s}" onclick="selectSize('${s}',this)">${s}</button>
               `).join('')}
             </div>
@@ -490,6 +506,10 @@ function toggleWishlist(id) {
 function closeModal(id) {
   document.getElementById(id).classList.remove('open');
   document.body.style.overflow = '';
+  // Clear the pack hash from URL
+  if (window.location.hash.startsWith('#pack-')) {
+    history.pushState(null, '', window.location.pathname + window.location.search);
+  }
 }
 
 // ── Cart ─────────────────────────────────────────

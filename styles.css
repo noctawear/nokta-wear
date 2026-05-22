@@ -6,27 +6,27 @@
 
 /* ── Root Variables ──────────────────────────────── */
 :root {
-  --black:       #080808;
-  --black-deep:  #050505;
-  --charcoal:    #111111;
-  --charcoal-2:  #1a1a1a;
-  --charcoal-3:  #222222;
-  --surface:     #161616;
+  --black:       #FFFFFF;
+  --black-deep:  #F8F7F5;
+  --charcoal:    #F0EEE9;
+  --charcoal-2:  #E8E4DC;
+  --charcoal-3:  #DEDBD2;
+  --surface:     #F4F2ED;
   --gold:        #C9A96E;
   --gold-light:  #E2C99A;
   --gold-dark:   #9A7A4A;
-  --silver:      #B8C4CC;
-  --silver-light:#D4DDE2;
-  --white:       #F5F3F0;
-  --white-dim:   #B0ABA4;
-  --white-faint: #5A5752;
-  --glass-bg:    rgba(255,255,255,0.03);
-  --glass-border:rgba(201,169,110,0.15);
-  --glass-hover: rgba(201,169,110,0.07);
+  --silver:      #6B7280;
+  --silver-light:#4B5563;
+  --white:       #1A1714;
+  --white-dim:   #4A4540;
+  --white-faint: #8A8580;
+  --glass-bg:    rgba(0,0,0,0.03);
+  --glass-border:rgba(201,169,110,0.25);
+  --glass-hover: rgba(201,169,110,0.1);
   --radius:      4px;
   --radius-lg:   12px;
-  --shadow-gold: 0 0 40px rgba(201,169,110,0.12);
-  --shadow-lg:   0 20px 60px rgba(0,0,0,0.6);
+  --shadow-gold: 0 0 40px rgba(201,169,110,0.15);
+  --shadow-lg:   0 20px 60px rgba(0,0,0,0.15);
   --transition:  0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --font-display:'Cormorant Garamond', Georgia, serif;
   --font-body:   'Montserrat', sans-serif;
@@ -112,11 +112,12 @@ body::before {
   transition: all 0.5s ease;
 }
 #navbar.scrolled {
-  background: rgba(8,8,8,0.85);
+  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(20px) saturate(1.5);
   -webkit-backdrop-filter: blur(20px) saturate(1.5);
   border-bottom: 1px solid var(--glass-border);
   padding: 0.75rem 2rem;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
 }
 .nav-logo {
   display: flex; align-items: center; gap: 0.75rem;
@@ -209,7 +210,7 @@ body::before {
 /* Mobile menu */
 .mobile-menu {
   position: fixed; inset: 0; z-index: 999;
-  background: rgba(5,5,5,0.97);
+  background: rgba(255,255,255,0.97);
   backdrop-filter: blur(20px);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 2.5rem;
@@ -239,8 +240,8 @@ body::before {
 .hero-bg {
   position: absolute; inset: 0;
   background: 
-    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(201,169,110,0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 80% 40% at 20% 20%, rgba(201,169,110,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(201,169,110,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 40% at 20% 20%, rgba(201,169,110,0.05) 0%, transparent 60%),
     var(--black);
 }
 .hero-lines {
@@ -1103,7 +1104,7 @@ section { position: relative; z-index: 1; }
 /* ── Search Overlay ─────────────────────────────── */
 .search-overlay {
   position: fixed; inset: 0; z-index: 5000;
-  background: rgba(0,0,0,0.97);
+  background: rgba(255,255,255,0.97);
   display: flex; flex-direction: column;
   align-items: center; justify-content: flex-start;
   padding-top: 15vh;

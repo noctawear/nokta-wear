@@ -39,7 +39,7 @@
         "محفظة جلدية"
       ],
       "sizes": [
-        "X",
+        "L",
         "XL",
         "XXL"
       ]
@@ -75,7 +75,7 @@
         "محفظة جلدية"
       ],
       "sizes": [
-        "X",
+        "L",
         "XL",
         "XXL"
       ]
@@ -88,7 +88,7 @@
       "name_ar": "الإصدار الأسود",
       "description_fr": "L'édition noire. Pour l'homme qui ne fait aucun compromis sur le style et la qualité.",
       "description_ar": "الإصدار الأسود. للرجل الذي لا يساوم على الأناقة والجودة.",
-      "price": 230,
+      "price": 279,
       "currency": "MAD",
       "image": "pack_blackedition.png",
       "color": "#6B7280",
@@ -111,7 +111,7 @@
         "محفظة جلدية سوداء"
       ],
       "sizes": [
-        "X",
+        "L",
         "XL",
         "XXL"
       ]
