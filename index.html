@@ -1,76 +1,230 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOCTA WEAR</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NOCTA WEAR — Collections exclusives de vêtements masculins. Packs premium livrés partout au Maroc. Paiement à la livraison.">
+  <meta name="keywords" content="nocta wear, vêtements hommes, pack mode maroc, boxer, sous-vêtements, livraison maroc">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="NOCTA WEAR™ — L'essentiel minimal pour l'homme moderne">
+  <meta property="og:description" content="Packs mode premium livrés partout au Maroc. Paiement à la livraison.">
+  <meta property="og:type" content="website">
+  <title>NOCTA WEAR™ — Minimal Essentials for Modern Men</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="navbar">
-  <div class="logo">NOCTA WEAR™</div>
+<!-- ── Loading Screen ─────────────────────────── -->
+<div id="loading-screen">
+  <div class="loading-logo">NOCTA WEAR</div>
+  <div class="loading-bar"></div>
+</div>
 
-  <nav>
-    <a href="#home">Accueil</a>
-    <a href="#packages">Packages</a>
-    <a href="#about">About</a>
-    <a href="#faq">FAQ</a>
-  </nav>
+<!-- ── Toast Container ───────────────────────── -->
+<div id="toast-container" class="toast-container"></div>
 
-  <div class="nav-icons">
-    <button id="langToggle">AR</button>
-    <button>🛒</button>
+<!-- ── Search Overlay ────────────────────────── -->
+<div id="search-overlay" class="search-overlay">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" placeholder="Rechercher un pack...">
+    <button id="search-close" class="search-close"><i class="fas fa-times"></i></button>
   </div>
-</header>
+  <p class="search-label">Appuyez sur Echap pour fermer</p>
+</div>
 
-<section class="hero" id="home">
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <h1>Minimal essentials for modern men</h1>
-    <p>Comfort. Style. Confidence.</p>
-    <a href="#packages" class="btn">Discover Packages</a>
+<!-- ── Navbar ─────────────────────────────────── -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <img src="logo.png" alt="NOCTA WEAR" onerror="this.style.display='none'">
+    NOCTA <span>WEAR</span>
+  </a>
+
+  <div class="nav-links" id="nav-links">
+    <!-- rendered by JS -->
   </div>
-</section>
 
-<section class="packages" id="packages">
-  <h2>Premium Packages</h2>
-  <div class="package-grid" id="packageContainer"></div>
-</section>
-
-<section class="about" id="about">
-  <h2>About NOCTA</h2>
-  <p>Luxury minimalist essentials designed for modern men in Morocco.</p>
-</section>
-
-<section class="faq" id="faq">
-  <h2>FAQ</h2>
-  <div class="faq-item">
-    <h3>Delivery?</h3>
-    <p>We deliver across all Morocco.</p>
+  <div class="nav-actions">
+    <!-- Search -->
+    <button id="search-btn" class="nav-icon-btn" title="Rechercher">
+      <i class="fas fa-search"></i>
+    </button>
+    <!-- Wishlist -->
+    <button class="nav-icon-btn" title="Favoris" style="position:relative">
+      <i class="far fa-heart"></i>
+      <span id="wishlist-badge" class="cart-badge">0</span>
+    </button>
+    <!-- Cart -->
+    <button id="cart-btn" class="nav-icon-btn cart-icon-btn" title="Panier" style="position:relative">
+      <i class="fas fa-shopping-bag"></i>
+      <span id="cart-badge" class="cart-badge">0</span>
+    </button>
+    <!-- Language Switcher -->
+    <div class="lang-switch-wrap lang-switcher">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="ar">ع</button>
+    </div>
+    <!-- Hamburger -->
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <div class="faq-item">
-    <h3>Payment?</h3>
-    <p>Cash on Delivery available.</p>
-  </div>
-</section>
+</nav>
 
-<footer>
-  <h3>NOCTA WEAR™</h3>
-  <p>WhatsApp: +212643911326</p>
-  <p>Luxury Men Essentials</p>
-</footer>
-
-<div class="modal" id="packageModal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div id="modalData"></div>
+<!-- ── Mobile Menu ────────────────────────────── -->
+<div class="mobile-menu" id="mobile-menu">
+  <div id="mobile-menu-links"></div>
+  <div class="lang-switcher" style="margin-top:1rem">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="ar">ع</button>
   </div>
 </div>
 
+<!-- ── Hero ───────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content" id="hero-content">
+    <!-- rendered by JS -->
+  </div>
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Packages ──────────────────────────────── -->
+<section id="packages" class="section-pad">
+  <div class="container">
+    <div class="section-header" id="packages-header">
+      <!-- rendered by JS -->
+    </div>
+    <div class="packages-grid" id="packages-grid">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── About / Features ──────────────────────── -->
+<section id="about" class="section-pad">
+  <div class="container">
+    <div class="section-header" id="about-header">
+      <!-- rendered by JS -->
+    </div>
+    <p id="about-desc" style="text-align:center;max-width:600px;margin:0 auto 3rem;font-size:0.85rem;color:var(--white-dim);line-height:1.8"></p>
+    <div class="features-grid" id="features-grid">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Testimonials ───────────────────────────── -->
+<section id="testimonials" class="section-pad">
+  <div class="container">
+    <div class="section-header" id="testimonials-header">
+      <!-- rendered by JS -->
+    </div>
+    <div class="testimonials-grid" id="testimonials-grid">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FAQ ───────────────────────────────────── -->
+<section id="faq" class="section-pad">
+  <div class="container">
+    <div class="section-header" id="faq-header">
+      <!-- rendered by JS -->
+    </div>
+    <div class="faq-list" id="faq-list">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Instagram ─────────────────────────────── -->
+<section id="instagram" class="section-pad" id="insta-section">
+  <div class="container">
+    <div class="section-header" id="insta-header">
+      <!-- rendered by JS -->
+    </div>
+    <div class="insta-banner" id="insta-banner">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Footer ────────────────────────────────── -->
+<footer>
+  <div id="footer-content">
+    <!-- rendered by JS -->
+  </div>
+</footer>
+
+<!-- ── Package Modal ──────────────────────────── -->
+<div class="modal-overlay" id="package-modal">
+  <!-- rendered by JS on open -->
+</div>
+
+<!-- ── Cart Drawer ────────────────────────────── -->
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h2 class="cart-title" id="cart-title-el">Votre Panier</h2>
+    <button class="cart-close" id="cart-close"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <div class="cart-empty">
+      <i class="fas fa-shopping-bag"></i>
+      <p>Votre panier est vide</p>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-amount" id="cart-total-amount">0 MAD</span>
+    </div>
+    <button class="btn-primary" id="checkout-btn">
+      <i class="fas fa-lock"></i> Commander
+    </button>
+    <button class="btn-whatsapp" id="cart-whatsapp-btn" style="margin-top:0.8rem">
+      <i class="fab fa-whatsapp"></i> Commander via WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- ── Checkout Modal ─────────────────────────── -->
+<div class="checkout-overlay" id="checkout-overlay">
+  <div class="checkout-box">
+    <div class="checkout-header">
+      <h2 class="checkout-title">Finaliser la commande</h2>
+      <button class="cart-close" id="checkout-close"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="checkout-body" id="checkout-body">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- ── Scripts ────────────────────────────────── -->
 <script src="app.js"></script>
+
 </body>
 </html>

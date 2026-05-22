@@ -1,18 +1,202 @@
 {
+  "brand": {
+    "name": "NOCTA WEAR",
+    "tagline_fr": "L'essentiel minimal pour l'homme moderne",
+    "tagline_ar": "الأساسيات المثالية للرجل العصري",
+    "tagline_en": "Minimal essentials for modern men",
+    "whatsapp": "+212643911326",
+    "instagram": "@nocta_wear",
+    "delivery": "Livraison partout au Maroc",
+    "payment": "Paiement à la livraison"
+  },
   "packages": [
     {
-      "id": 1,
-      "name": "Essential Pack",
-      "description": "Minimal premium essentials for everyday comfort.",
-      "price": 299,
-      "image": "https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?q=80&w=1200"
+      "id": "essential",
+      "badge_fr": "BEST SELLER",
+      "badge_ar": "الأكثر مبيعاً",
+      "name_fr": "Essential Pack",
+      "name_ar": "الباك الأساسي",
+      "description_fr": "Le pack indispensable pour le quotidien moderne. Confort et style réunis dans une seule sélection.",
+      "description_ar": "الباك الأساسي للحياة اليومية العصرية. راحة وأناقة في اختيار واحد.",
+      "price": 199,
+      "currency": "MAD",
+      "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&q=80",
+      "color": "#C9A96E",
+      "items_fr": [
+        "5 Débardeurs intérieurs (Blanc, Noir, Gris)",
+        "5 Boxers NOCTA_WEAR",
+        "12 Chaussettes Sport",
+        "1 Parfum Homme 5ml",
+        "1 Ceinture en cuir",
+        "1 Portefeuille en cuir"
+      ],
+      "items_ar": [
+        "5 قمصان داخلية (أبيض، أسود، رمادي)",
+        "5 بوكسيرات NOCTA_WEAR",
+        "12 جوارب سبورت",
+        "عطر رجالي 5ml",
+        "حزام جلدي",
+        "محفظة جلدية"
+      ],
+      "sizes": ["S", "M", "L", "XL", "XXL"]
     },
     {
-      "id": 2,
-      "name": "Premium Pack",
-      "description": "Luxury underwear and fragrance combination.",
-      "price": 499,
-      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200"
+      "id": "premium",
+      "badge_fr": "POPULAIRE",
+      "badge_ar": "الأكثر شهرة",
+      "name_fr": "Premium Pack",
+      "name_ar": "الباك بريميوم",
+      "description_fr": "Une expérience premium complète. Tout ce dont l'homme moderne a besoin pour paraître impeccable.",
+      "description_ar": "تجربة بريميوم متكاملة. كل ما يحتاجه الرجل العصري ليبدو في أبهى صورة.",
+      "price": 230,
+      "currency": "MAD",
+      "image": "https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=600&q=80",
+      "color": "#A8B8C8",
+      "items_fr": [
+        "5 Débardeurs intérieurs premium",
+        "5 Boxers NOCTA_WEAR",
+        "12 Chaussettes Sport",
+        "3 Chaussettes Nike longues",
+        "1 Parfum Homme 5ml",
+        "1 Ceinture en cuir premium",
+        "1 Portefeuille en cuir"
+      ],
+      "items_ar": [
+        "5 قمصان داخلية بريميوم",
+        "5 بوكسيرات NOCTA_WEAR",
+        "12 جوارب سبورت",
+        "3 جوارب نايك طويلة",
+        "عطر رجالي 5ml",
+        "حزام جلدي بريميوم",
+        "محفظة جلدية"
+      ],
+      "sizes": ["S", "M", "L", "XL", "XXL"]
+    },
+    {
+      "id": "black-edition",
+      "badge_fr": "EXCLUSIF",
+      "badge_ar": "حصري",
+      "name_fr": "Black Edition",
+      "name_ar": "الإصدار الأسود",
+      "description_fr": "L'édition noire. Pour l'homme qui ne fait aucun compromis sur le style et la qualité.",
+      "description_ar": "الإصدار الأسود. للرجل الذي لا يساوم على الأناقة والجودة.",
+      "price": 279,
+      "currency": "MAD",
+      "image": "https://images.unsplash.com/photo-1592503254549-d83d24a4dfab?w=600&q=80",
+      "color": "#6B7280",
+      "items_fr": [
+        "5 Débardeurs intérieurs All Black",
+        "5 Boxers NOCTA_WEAR All Black",
+        "12 Chaussettes Sport noires",
+        "3 Chaussettes Nike noires longues",
+        "1 Parfum Homme 10ml",
+        "1 Ceinture en cuir noir",
+        "1 Portefeuille en cuir noir"
+      ],
+      "items_ar": [
+        "5 قمصان داخلية سوداء بالكامل",
+        "5 بوكسيرات NOCTA_WEAR سوداء",
+        "12 جوارب سبورت سوداء",
+        "3 جوارب نايك طويلة سوداء",
+        "عطر رجالي 10ml",
+        "حزام جلدي أسود",
+        "محفظة جلدية سوداء"
+      ],
+      "sizes": ["S", "M", "L", "XL", "XXL"]
+    },
+    {
+      "id": "elite",
+      "badge_fr": "ÉDITION LIMITÉE",
+      "badge_ar": "إصدار محدود",
+      "name_fr": "Elite Gentleman Pack",
+      "name_ar": "باك النخبة الجنتلمان",
+      "description_fr": "Le summum du raffinement masculin. Notre collection la plus prestigieuse, réservée aux hommes d'exception.",
+      "description_ar": "قمة الأناقة الرجالية. مجموعتنا الأكثر تميزاً، مخصصة للرجل الاستثنائي.",
+      "price": 349,
+      "currency": "MAD",
+      "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80",
+      "color": "#C9A96E",
+      "items_fr": [
+        "5 Débardeurs intérieurs premium",
+        "5 Boxers NOCTA_WEAR premium",
+        "12 Chaussettes Sport",
+        "3 Chaussettes Nike longues",
+        "1 Parfum Homme 15ml",
+        "1 Ceinture en cuir luxe",
+        "1 Portefeuille en cuir luxe",
+        "1 Montre fashion",
+        "1 Sac de rangement premium"
+      ],
+      "items_ar": [
+        "5 قمصان داخلية بريميوم",
+        "5 بوكسيرات NOCTA_WEAR بريميوم",
+        "12 جوارب سبورت",
+        "3 جوارب نايك طويلة",
+        "عطر رجالي 15ml",
+        "حزام جلدي فاخر",
+        "محفظة جلدية فاخرة",
+        "ساعة فاشن",
+        "حقيبة تخزين بريميوم"
+      ],
+      "sizes": ["S", "M", "L", "XL", "XXL"]
+    }
+  ],
+  "faq": [
+    {
+      "q_fr": "Quel est le délai de livraison ?",
+      "q_ar": "ما هي مدة التوصيل؟",
+      "a_fr": "La livraison prend entre 2 à 5 jours ouvrables partout au Maroc.",
+      "a_ar": "يستغرق التوصيل من 2 إلى 5 أيام عمل في جميع أنحاء المغرب."
+    },
+    {
+      "q_fr": "Comment fonctionne le paiement à la livraison ?",
+      "q_ar": "كيف يعمل الدفع عند الاستلام؟",
+      "a_fr": "Vous payez uniquement lorsque vous recevez votre colis. Aucun paiement en avance.",
+      "a_ar": "تدفع فقط عند استلام طردك. لا دفع مسبق."
+    },
+    {
+      "q_fr": "Puis-je retourner ou échanger un article ?",
+      "q_ar": "هل يمكنني إرجاع أو استبدال المنتج؟",
+      "a_fr": "Oui, nous acceptons les échanges dans les 7 jours suivant la réception si le produit est intact.",
+      "a_ar": "نعم، نقبل الاستبدال خلال 7 أيام من الاستلام إذا كان المنتج سليماً."
+    },
+    {
+      "q_fr": "Les tailles correspondent-elles aux tailles standard ?",
+      "q_ar": "هل المقاسات تتوافق مع المقاسات القياسية؟",
+      "a_fr": "Oui, nos tailles suivent les standards européens. En cas de doute, nous recommandons de choisir une taille au-dessus.",
+      "a_ar": "نعم، مقاساتنا تتبع المعايير الأوروبية. في حالة الشك، ننصح باختيار مقاس أكبر."
+    },
+    {
+      "q_fr": "Puis-je commander via WhatsApp ?",
+      "q_ar": "هل يمكنني الطلب عبر واتساب؟",
+      "a_fr": "Absolument ! Cliquez sur le bouton WhatsApp sur n'importe quelle fiche produit pour commander directement.",
+      "a_ar": "بالتأكيد! انقر على زر واتساب في أي صفحة منتج للطلب مباشرة."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Karim B.",
+      "city_fr": "Casablanca",
+      "city_ar": "الدار البيضاء",
+      "text_fr": "Qualité incroyable pour le prix. Le Black Edition vaut vraiment son prix. Je recommande !",
+      "text_ar": "جودة رائعة مقابل السعر. الإصدار الأسود يستحق ثمنه فعلاً. أنصح به!",
+      "rating": 5
+    },
+    {
+      "name": "Youssef M.",
+      "city_fr": "Rabat",
+      "city_ar": "الرباط",
+      "text_fr": "Livraison rapide, emballage soigné, et les produits sont exactement comme sur les photos.",
+      "text_ar": "توصيل سريع، تغليف أنيق، والمنتجات بالضبط كما في الصور.",
+      "rating": 5
+    },
+    {
+      "name": "Amine L.",
+      "city_fr": "Marrakech",
+      "city_ar": "مراكش",
+      "text_fr": "Le Premium Pack est parfait. J'ai commandé 3 fois déjà. Service client au top.",
+      "text_ar": "الباك بريميوم مثالي. طلبت 3 مرات بالفعل. خدمة عملاء ممتازة.",
+      "rating": 5
     }
   ]
 }
