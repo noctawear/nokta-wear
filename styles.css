@@ -1321,3 +1321,35 @@ footer {
   from { opacity: 0; transform: translateY(-8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ── Simple Order Form ───────────────────────────── */
+.simple-order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.order-summary-mini {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.order-summary-mini .summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--white-dim);
+  padding: 0.2rem 0;
+}
+.order-summary-mini .summary-row.total {
+  border-top: 1px solid var(--glass-border);
+  margin-top: 0.2rem;
+  padding-top: 0.5rem;
+  font-weight: 600;
+  color: var(--white);
+  font-size: 0.85rem;
+}

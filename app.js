@@ -568,8 +568,6 @@ function updateCartBadge() {
 // ── Checkout ─────────────────────────────────────
 function openCheckout() {
   if (!state.cart.length) { showToast('Panier vide', 'exclamation'); return; }
-  state.checkoutStep = 1;
-  state.checkoutData = {};
   renderCheckout();
   document.getElementById('checkout-overlay').classList.add('open');
   closeCart();
@@ -578,99 +576,52 @@ function openCheckout() {
 
 function renderCheckout() {
   const body = document.getElementById('checkout-body');
-  const titles = [t('step1_title'), t('step2_title'), t('step3_title')];
-  const steps = titles.map((title, i) => {
-    const n = i + 1;
-    const cls = n < state.checkoutStep ? 'done' : n === state.checkoutStep ? 'active' : '';
-    return `<div class="step ${cls}">
-      <div class="step-num">${n < state.checkoutStep ? '<i class="fas fa-check" style="font-size:0.65rem"></i>' : n}</div>
-      <div class="step-label">${title}</div>
-    </div>`;
-  }).join('');
-
-  let formHTML = '';
-  if (state.checkoutStep === 1) {
-    formHTML = `
-      <div class="form-group"><label>${t('fullname')}</label><input type="text" class="form-input" id="f-name" placeholder="${t('fullname')}" value="${state.checkoutData.name || ''}"></div>
-      <div class="form-group"><label>${t('phone')}</label><input type="tel" class="form-input" id="f-phone" placeholder="+212..." value="${state.checkoutData.phone || ''}"></div>
-      <div class="checkout-nav">
-        <button class="btn-next" onclick="checkoutNext()">${t('next')} <i class="fas fa-arrow-right"></i></button>
-      </div>`;
-  } else if (state.checkoutStep === 2) {
-    formHTML = `
-      <div class="form-group"><label>${t('city')}</label><input type="text" class="form-input" id="f-city" placeholder="${t('city')}" value="${state.checkoutData.city || ''}"></div>
-      <div class="form-group"><label>${t('address')}</label><input type="text" class="form-input" id="f-address" placeholder="${t('address')}" value="${state.checkoutData.address || ''}"></div>
-      <div class="form-group"><label>${t('notes')}</label><input type="text" class="form-input" id="f-notes" placeholder="${t('notes')}" value="${state.checkoutData.notes || ''}"></div>
-      <div class="checkout-nav">
-        <button class="btn-prev" onclick="checkoutPrev()"><i class="fas fa-arrow-left"></i> ${t('prev')}</button>
-        <button class="btn-next" onclick="checkoutNext()">${t('next')} <i class="fas fa-arrow-right"></i></button>
-      </div>`;
-  } else {
-    const total = state.cart.reduce((s, i) => s + i.total, 0);
-    const summaryRows = state.cart.map(item => `
-      <div class="summary-row"><span>${item.name} (${item.size}) ×${item.qty}</span><span>${item.total} MAD</span></div>
-    `).join('');
-    formHTML = `
-      <div class="confirmation-content">
-        <div class="confirmation-summary">
-          <div class="summary-row"><span>${t('fullname')}</span><span>${state.checkoutData.name}</span></div>
-          <div class="summary-row"><span>${t('phone')}</span><span>${state.checkoutData.phone}</span></div>
-          <div class="summary-row"><span>${t('city')}</span><span>${state.checkoutData.city}</span></div>
-          <div class="summary-row"><span>${t('address')}</span><span>${state.checkoutData.address}</span></div>
-          <div style="border-top:1px solid var(--glass-border);margin:0.5rem 0"></div>
-          ${summaryRows}
-          <div class="summary-row"><span>${t('summary_delivery')}</span><span style="color:var(--gold)">${t('summary_delivery_val')}</span></div>
-          <div class="summary-row total"><span>${t('summary_total')}</span><span>${total} MAD</span></div>
-        </div>
-        <div class="checkout-nav">
-          <button class="btn-prev" onclick="checkoutPrev()"><i class="fas fa-arrow-left"></i> ${t('prev')}</button>
-          <button class="btn-next" onclick="confirmOrder()">${t('confirm_order')} <i class="fas fa-check"></i></button>
-        </div>
-      </div>`;
-  }
+  const total = state.cart.reduce((s, i) => s + i.total, 0);
+  const itemsSummary = state.cart.map(item =>
+    `<div class="summary-row"><span>${item.name} (${item.size}) ×${item.qty}</span><span>${item.total} MAD</span></div>`
+  ).join('');
 
   body.innerHTML = `
-    <div class="step-indicator">${steps}</div>
-    ${formHTML}
+    <div class="simple-order-form">
+      <div class="order-summary-mini">
+        ${itemsSummary}
+        <div class="summary-row total"><span>${t('summary_total')}</span><span>${total} MAD</span></div>
+        <div class="summary-row" style="color:var(--gold);font-size:0.72rem">
+          <span><i class="fas fa-truck"></i> ${t('free_delivery')}</span><span>${t('summary_delivery_val')}</span>
+        </div>
+      </div>
+      <div class="form-group"><label>${t('fullname')}</label><input type="text" class="form-input" id="f-name" placeholder="${t('fullname')}"></div>
+      <div class="form-group"><label>${t('phone')}</label><input type="tel" class="form-input" id="f-phone" placeholder="+212..."></div>
+      <div class="form-group"><label>${t('city')}</label><input type="text" class="form-input" id="f-city" placeholder="${t('city')}"></div>
+      <div class="form-group"><label>${t('address')}</label><input type="text" class="form-input" id="f-address" placeholder="${t('address')}"></div>
+      <button class="btn-whatsapp" style="width:100%;margin-top:0.8rem;justify-content:center;display:flex" onclick="confirmOrder()">
+        <i class="fab fa-whatsapp"></i> ${t('send_whatsapp')}
+      </button>
+    </div>
   `;
 }
 
-function checkoutNext() {
-  if (state.checkoutStep === 1) {
-    const name = document.getElementById('f-name')?.value.trim();
-    const phone = document.getElementById('f-phone')?.value.trim();
-    if (!name || !phone) { showToast('Veuillez remplir tous les champs', 'exclamation'); return; }
-    state.checkoutData.name = name;
-    state.checkoutData.phone = phone;
-  } else if (state.checkoutStep === 2) {
-    const city = document.getElementById('f-city')?.value.trim();
-    const address = document.getElementById('f-address')?.value.trim();
-    if (!city || !address) { showToast('Veuillez remplir tous les champs', 'exclamation'); return; }
-    state.checkoutData.city = city;
-    state.checkoutData.address = address;
-    state.checkoutData.notes = document.getElementById('f-notes')?.value.trim() || '';
-  }
-  state.checkoutStep = Math.min(3, state.checkoutStep + 1);
-  renderCheckout();
-}
-
-function checkoutPrev() {
-  state.checkoutStep = Math.max(1, state.checkoutStep - 1);
-  renderCheckout();
-}
+function checkoutNext() {}
+function checkoutPrev() {}
 
 function confirmOrder() {
+  const name = document.getElementById('f-name')?.value.trim();
+  const phone = document.getElementById('f-phone')?.value.trim();
+  const city = document.getElementById('f-city')?.value.trim();
+  const address = document.getElementById('f-address')?.value.trim();
+  if (!name || !phone || !city || !address) {
+    showToast('Veuillez remplir tous les champs', 'exclamation');
+    return;
+  }
   const total = state.cart.reduce((s, i) => s + i.total, 0);
-  const d = state.checkoutData;
   const itemLines = state.cart.map(i => `📦 ${i.name} (${i.size}) ×${i.qty} — ${i.total} MAD`).join('\n');
   const msg = encodeURIComponent([
-    `🛍 *NOCTA WEAR — Commande Confirmée*`,
+    `🛍 *NOCTA WEAR — Commande*`,
     ``,
-    `👤 *Client:* ${d.name}`,
-    `📞 *Téléphone:* ${d.phone}`,
-    `🏙 *Ville:* ${d.city}`,
-    `🏠 *Adresse:* ${d.address}`,
-    d.notes ? `📝 *Notes:* ${d.notes}` : '',
+    `👤 *Nom:* ${name}`,
+    `📞 *Téléphone:* ${phone}`,
+    `🏙 *Ville:* ${city}`,
+    `🏠 *Adresse:* ${address}`,
     ``,
     `*Articles commandés:*`,
     itemLines,
@@ -679,18 +630,9 @@ function confirmOrder() {
     `🚚 Livraison gratuite`,
     `💵 Paiement à la livraison`
   ].filter(Boolean).join('\n'));
-
-  const body = document.getElementById('checkout-body');
-  body.innerHTML = `
-    <div class="confirmation-content">
-      <div class="confirmation-icon"><i class="fas fa-check"></i></div>
-      <h3 class="confirmation-title">${t('order_confirmed')}</h3>
-      <p class="confirmation-text">${t('order_text')}</p>
-      <a href="https://wa.me/${state.data.brand.whatsapp}?text=${msg}" target="_blank" class="btn-whatsapp" style="justify-content:center;display:flex">
-        <i class="fab fa-whatsapp"></i> ${t('send_whatsapp')}
-      </a>
-    </div>
-  `;
+  window.open(`https://wa.me/${state.data.brand.whatsapp}?text=${msg}`, '_blank');
+  document.getElementById('checkout-overlay').classList.remove('open');
+  document.body.style.overflow = '';
   state.cart = [];
   updateCartBadge();
 }
