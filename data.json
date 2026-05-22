@@ -38,7 +38,11 @@
         "حزام جلدي",
         "محفظة جلدية"
       ],
-      "sizes": ["S", "M", "L", "XL", "XXL"]
+      "sizes": [
+        "X",
+        "XL",
+        "XXL"
+      ]
     },
     {
       "id": "premium",
@@ -70,7 +74,11 @@
         "حزام جلدي بريميوم",
         "محفظة جلدية"
       ],
-      "sizes": ["S", "M", "L", "XL", "XXL"]
+      "sizes": [
+        "X",
+        "XL",
+        "XXL"
+      ]
     },
     {
       "id": "black-edition",
@@ -102,43 +110,11 @@
         "حزام جلدي أسود",
         "محفظة جلدية سوداء"
       ],
-      "sizes": ["S", "M", "L", "XL", "XXL"]
-    },
-    {
-      "id": "elite",
-      "badge_fr": "ÉDITION LIMITÉE",
-      "badge_ar": "إصدار محدود",
-      "name_fr": "Elite Gentleman Pack",
-      "name_ar": "باك النخبة الجنتلمان",
-      "description_fr": "Le summum du raffinement masculin. Notre collection la plus prestigieuse, réservée aux hommes d'exception.",
-      "description_ar": "قمة الأناقة الرجالية. مجموعتنا الأكثر تميزاً، مخصصة للرجل الاستثنائي.",
-      "price": 349,
-      "currency": "MAD",
-      "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80",
-      "color": "#C9A96E",
-      "items_fr": [
-        "5 Débardeurs intérieurs premium",
-        "5 Boxers NOCTA_WEAR premium",
-        "12 Chaussettes Sport",
-        "3 Chaussettes Nike longues",
-        "1 Parfum Homme 15ml",
-        "1 Ceinture en cuir luxe",
-        "1 Portefeuille en cuir luxe",
-        "1 Montre fashion",
-        "1 Sac de rangement premium"
-      ],
-      "items_ar": [
-        "5 قمصان داخلية بريميوم",
-        "5 بوكسيرات NOCTA_WEAR بريميوم",
-        "12 جوارب سبورت",
-        "3 جوارب نايك طويلة",
-        "عطر رجالي 15ml",
-        "حزام جلدي فاخر",
-        "محفظة جلدية فاخرة",
-        "ساعة فاشن",
-        "حقيبة تخزين بريميوم"
-      ],
-      "sizes": ["S", "M", "L", "XL", "XXL"]
+      "sizes": [
+        "X",
+        "XL",
+        "XXL"
+      ]
     }
   ],
   "faq": [

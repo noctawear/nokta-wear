@@ -339,7 +339,7 @@ function openPackageModal(id) {
           <div class="control-group">
             <label>${t('select_size')}</label>
             <div class="size-selector">
-              ${(pkg.sizes || ['S','M','L','XL','XXL']).map(s => `
+              ${(['X','XL','XXL']).map(s => `
                 <button class="size-btn" data-size="${s}" onclick="selectSize('${s}',this)">${s}</button>
               `).join('')}
             </div>
@@ -367,11 +367,21 @@ function openPackageModal(id) {
           <button class="btn-primary" onclick="addToCart()">
             <i class="fas fa-shopping-bag"></i> ${t('add_to_cart')}
           </button>
-          <button class="btn-whatsapp" onclick="whatsappOrder()">
+          <button class="btn-whatsapp" id="modal-whatsapp-btn" onclick="whatsappOrderWithInfo()" style="display:none">
             <i class="fab fa-whatsapp"></i> ${t('order_via_wa')}
           </button>
           <button class="btn-wishlist ${isInWishlist ? 'active' : ''}" id="wishlist-btn" onclick="toggleWishlist('${id}')">
             <i class="fa${isInWishlist ? 's' : 'r'} fa-heart"></i>
+          </button>
+        </div>
+        <!-- Info form shown before WhatsApp order -->
+        <div id="modal-info-form" class="modal-info-form">
+          <p class="modal-info-form-title"><i class="fas fa-user"></i> ${t('fullname') + ' & ' + t('phone')}</p>
+          <div class="form-group"><input type="text" class="form-input" id="modal-f-name" placeholder="${t('fullname')}"></div>
+          <div class="form-group"><input type="tel" class="form-input" id="modal-f-phone" placeholder="+212..."></div>
+          <div class="form-group"><input type="text" class="form-input" id="modal-f-city" placeholder="${t('city')}"></div>
+          <button class="btn-whatsapp" style="width:100%;margin-top:0.5rem" onclick="submitModalWhatsapp()">
+            <i class="fab fa-whatsapp"></i> ${t('order_via_wa')}
           </button>
         </div>
       </div>
@@ -385,6 +395,9 @@ function selectSize(size, btn) {
   state.currentSize = size;
   document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  // Show WhatsApp order button now that size is selected
+  const waBtn = document.getElementById('modal-whatsapp-btn');
+  if (waBtn) waBtn.style.display = '';
 }
 
 function changeQty(delta) {
@@ -418,11 +431,29 @@ function addToCart() {
   setTimeout(() => openCart(), 300);
 }
 
-function whatsappOrder() {
-  const pkg = state.currentPackage;
+function whatsappOrderWithInfo() {
   if (!state.currentSize) { showToast(t('select_size_warn'), 'exclamation-circle'); return; }
+  // Show inline form
+  const form = document.getElementById('modal-info-form');
+  if (form) {
+    form.classList.toggle('visible');
+    if (form.classList.contains('visible')) form.querySelector('input')?.focus();
+  }
+}
+
+function submitModalWhatsapp() {
+  if (!state.currentSize) { showToast(t('select_size_warn'), 'exclamation-circle'); return; }
+  const name = document.getElementById('modal-f-name')?.value.trim();
+  const phone = document.getElementById('modal-f-phone')?.value.trim();
+  const city = document.getElementById('modal-f-city')?.value.trim();
+  if (!name || !phone || !city) { showToast('Veuillez remplir tous les champs', 'exclamation'); return; }
+  const pkg = state.currentPackage;
   const lines = [
     `🛍 *NOCTA WEAR — Nouvelle Commande*`,
+    ``,
+    `👤 *Client:* ${name}`,
+    `📞 *Téléphone:* ${phone}`,
+    `🏙 *Ville:* ${city}`,
     ``,
     `📦 Pack: *${pkg[`name_${state.lang}`]}*`,
     `📐 Taille: *${state.currentSize}*`,
@@ -434,6 +465,10 @@ function whatsappOrder() {
   ];
   const msg = encodeURIComponent(lines.join('\n'));
   window.open(`https://wa.me/${state.data.brand.whatsapp}?text=${msg}`, '_blank');
+}
+
+function whatsappOrder() {
+  whatsappOrderWithInfo();
 }
 
 function toggleWishlist(id) {
@@ -919,6 +954,8 @@ window.selectSize = selectSize;
 window.changeQty = changeQty;
 window.addToCart = addToCart;
 window.whatsappOrder = whatsappOrder;
+window.whatsappOrderWithInfo = whatsappOrderWithInfo;
+window.submitModalWhatsapp = submitModalWhatsapp;
 window.toggleWishlist = toggleWishlist;
 window.toggleFAQ = toggleFAQ;
 window.openCart = openCart;
