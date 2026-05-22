@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOCTA WEAR</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">NOCTA WEAR™</div>
+
+  <nav>
+    <a href="#home">Accueil</a>
+    <a href="#packages">Packages</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+
+  <div class="nav-icons">
+    <button id="langToggle">AR</button>
+    <button>🛒</button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>Minimal essentials for modern men</h1>
+    <p>Comfort. Style. Confidence.</p>
+    <a href="#packages" class="btn">Discover Packages</a>
+  </div>
+</section>
+
+<section class="packages" id="packages">
+  <h2>Premium Packages</h2>
+  <div class="package-grid" id="packageContainer"></div>
+</section>
+
+<section class="about" id="about">
+  <h2>About NOCTA</h2>
+  <p>Luxury minimalist essentials designed for modern men in Morocco.</p>
+</section>
+
+<section class="faq" id="faq">
+  <h2>FAQ</h2>
+  <div class="faq-item">
+    <h3>Delivery?</h3>
+    <p>We deliver across all Morocco.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Payment?</h3>
+    <p>Cash on Delivery available.</p>
+  </div>
+</section>
+
+<footer>
+  <h3>NOCTA WEAR™</h3>
+  <p>WhatsApp: +212643911326</p>
+  <p>Luxury Men Essentials</p>
+</footer>
+
+<div class="modal" id="packageModal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="modalData"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
