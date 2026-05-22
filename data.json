@@ -20,7 +20,7 @@
       "description_ar": "الباك الأساسي للحياة اليومية العصرية. راحة وأناقة في اختيار واحد.",
       "price": 199,
       "currency": "MAD",
-      "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&q=80",
+      "image": "pack_essential.png",
       "color": "#C9A96E",
       "items_fr": [
         "5 Débardeurs intérieurs (Blanc, Noir, Gris)",
@@ -54,7 +54,7 @@
       "description_ar": "تجربة بريميوم متكاملة. كل ما يحتاجه الرجل العصري ليبدو في أبهى صورة.",
       "price": 230,
       "currency": "MAD",
-      "image": "https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=600&q=80",
+      "image": "pack_premium.png",
       "color": "#A8B8C8",
       "items_fr": [
         "5 Débardeurs intérieurs premium",
@@ -90,7 +90,7 @@
       "description_ar": "الإصدار الأسود. للرجل الذي لا يساوم على الأناقة والجودة.",
       "price": 279,
       "currency": "MAD",
-      "image": "https://images.unsplash.com/photo-1592503254549-d83d24a4dfab?w=600&q=80",
+      "image": "pack_blackedition.png",
       "color": "#6B7280",
       "items_fr": [
         "5 Débardeurs intérieurs All Black",
